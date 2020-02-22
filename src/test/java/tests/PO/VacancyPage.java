@@ -1,21 +1,33 @@
 package test.java.tests.PO;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class VacancyPage {
-    WebDriver driver;
-    WebDriverWait wait;
 
-    public VacancyPage(WebDriver driver ){
-        this.driver = driver;
-        wait = new WebDriverWait(this.driver, 30);
+public class VacancyPage extends BasePage{
+    Logger logger = LogManager.getLogger(VacancyPage.class);
+
+
+    public VacancyPage(WebDriver driver) {
+        super(driver);
     }
 
+    public VacancyPage open() {
+        driver.get("http://iteaua-develop.demo.gns-it.com/about-itea/corporate-education/");
+        return this;
+    }
+
+
     public VacancyPage selectVacancy(String vacancy) {
+        logger.trace("Select vacancy" + vacancy);
+        logger.debug("Select vacancy" + vacancy);
+        logger.info("Select vacancy" + vacancy);
+        logger.error("Select vacancy" + vacancy);
+        logger.warn("Select vacancy" + vacancy);
         WebElement uxVacancy = driver.findElement(By.xpath("//a//h2[text()='" + vacancy + "']"));
         wait.until(ExpectedConditions.elementToBeClickable(uxVacancy));
         uxVacancy.click();

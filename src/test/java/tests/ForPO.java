@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import test.java.tests.PO.BasePage;
 import test.java.tests.PO.HomePage;
 import test.java.tests.PO.VacancyPage;
 
@@ -12,10 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class ForPO extends BaseTest {
     HomePage homePage;
     VacancyPage vacancyPage;
+    BasePage basePage;
 
     @BeforeMethod
     public void PageLoad() {
@@ -41,22 +44,25 @@ public class ForPO extends BaseTest {
 
     @Test
     public void checkLang() {
-        //int arr[] = {2,4,6,8,1,1};
-//        List<String> a = new ArrayList<String>();
-//        List<Integer> a1 = new ArrayList<Integer>();
-        String lang[] = {"UA", "EN", "RU"};
+        String langExpected[] = {"RU", "UA", "EN2"};
 
         homePage.open();
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("(//a[text() = 'UA'])[1]"))));
 
-        List<WebElement> list = driver.findElements(By.xpath("(//ul[@class='lang'])[1]//a"));
-        System.out.println(list.get(0).getText());
-        System.out.println(list.get(1).getText());
-        System.out.println(list.get(2).getText());
-        list.size();
-        for(WebElement el: list) {
-            System.out.println();
-            System.out.println(el.getText());
+        List<WebElement> langElements = driver.findElements(By.xpath("(//ul[@class='lang'])[1]//a"));
+        List<String> langActual = new ArrayList<String>();
+
+        for(WebElement el: langElements) {
+            langActual.add(el.getText());
+        }
+
+        for(String el: langActual) {
+            System.out.println(el);
+        }
+
+        for(String lang: langExpected) {
+            boolean isContains = langActual.contains(lang);
+            assertTrue(isContains, String.format("Expected language '%s' to be present on the page", lang));
         }
 
     }
