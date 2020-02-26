@@ -3,6 +3,7 @@ package test.java.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import test.java.tests.PO.BasePage;
@@ -40,31 +41,6 @@ public class ForPO extends BaseTest {
         String actualMsg = vacancyPage.getPhoneErrorMsg();
         String expectedMsg = "Поле не має бути пустим";
         assertEquals(actualMsg, expectedMsg);
-    }
-
-    @Test
-    public void checkLang() {
-        String langExpected[] = {"RU", "UA", "EN2"};
-
-        homePage.open();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("(//a[text() = 'UA'])[1]"))));
-
-        List<WebElement> langElements = driver.findElements(By.xpath("(//ul[@class='lang'])[1]//a"));
-        List<String> langActual = new ArrayList<String>();
-
-        for(WebElement el: langElements) {
-            langActual.add(el.getText());
-        }
-
-        for(String el: langActual) {
-            System.out.println(el);
-        }
-
-        for(String lang: langExpected) {
-            boolean isContains = langActual.contains(lang);
-            assertTrue(isContains, String.format("Expected language '%s' to be present on the page", lang));
-        }
-
     }
 
 }
