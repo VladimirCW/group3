@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.java.utils.PropertyLoader;
 
 public class HomePage extends BasePage{
     Logger logger = LogManager.getLogger(HomePage.class);
@@ -18,7 +19,7 @@ public class HomePage extends BasePage{
     public HomePage open() {
         logger.info("Home page is opened");
         logger.debug("Home page is opened fsfasd fsdfsdfasdfas sdfafasfsdf sdfasfasdf asdafsdfafa fafasdf ");
-        driver.get("http://iteaua-develop.demo.gns-it.com/about-itea/");
+        driver.get(PropertyLoader.getProperty("url"));
         WebElement spinner = driver.findElement(By.id("preload-it"));
         wait.until(ExpectedConditions.visibilityOf(spinner));
         wait.until(ExpectedConditions.invisibilityOf(spinner));
