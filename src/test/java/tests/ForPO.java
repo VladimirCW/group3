@@ -27,9 +27,10 @@ public class ForPO extends BaseTest {
         vacancyPage = new VacancyPage(driver);
     }
 
-    @Test
+    @Test()
     public void anyTest() {
-        homePage.open()
+        assertTrue(false);
+        /*homePage.open()
                 .selectLanguage("uk")
                 .openAbout()
                 .openVacancies();
@@ -40,7 +41,7 @@ public class ForPO extends BaseTest {
                 .submit();
         String actualMsg = vacancyPage.getPhoneErrorMsg();
         String expectedMsg = "Поле не має бути пустим";
-        assertEquals(actualMsg, expectedMsg);
+        assertEquals(actualMsg, expectedMsg);*/
     }
 
 }
