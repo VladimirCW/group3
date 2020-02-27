@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import test.java.tests.PO.BasePage;
 import test.java.tests.PO.HomePage;
 import test.java.tests.PO.VacancyPage;
+import test.java.utils.RetryAnalizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,24 @@ public class ForPO extends BaseTest {
                 .submit();
         String actualMsg = vacancyPage.getPhoneErrorMsg();
         String expectedMsg = "Поле не має бути пустим";
+        assertEquals(actualMsg, expectedMsg);
+        assertTrue(false);
+    }
+
+    @Test()
+    public void newAnyTest() {
+        homePage.open()
+                .selectLanguage("uk")
+                .openAbout()
+                .openVacancies();
+        vacancyPage
+                .selectVacancy("Викладач UX")
+                .setName("Vova")
+                .setEmail("email@email.com")
+                .submit();
+        String actualMsg = vacancyPage.getPhoneErrorMsg();
+        String expectedMsg = "Поле не має бути пустим";
+        ///assertTrue(false);
         assertEquals(actualMsg, expectedMsg);
     }
 
