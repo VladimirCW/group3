@@ -31,7 +31,13 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown() {
+        saveScreenshot();
         driver.quit();
+    }
+
+    @Attachment(value = "screen", type = "image/png")
+    private byte[] saveScreenshot() {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 
 }

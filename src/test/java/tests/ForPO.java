@@ -53,6 +53,7 @@ public class ForPO extends BaseTest {
         String actualMsg = vacancyPage.getPhoneErrorMsg();
         String expectedMsg = "Поле не має бути пустим";
         assertEquals(actualMsg, expectedMsg);
+        assertTrue(false);
     }
     @Story("Add to cart")
     @Feature("Delete t-short")
@@ -70,6 +71,7 @@ public class ForPO extends BaseTest {
         String actualMsg = vacancyPage.getPhoneErrorMsg();
         String expectedMsg = "Поле не має бути пустим";
         assertEquals(actualMsg, expectedMsg);
+
     }
 
 }
