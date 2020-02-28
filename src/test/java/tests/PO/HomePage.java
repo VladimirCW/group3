@@ -1,5 +1,6 @@
 package test.java.tests.PO;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -16,6 +17,7 @@ public class HomePage extends BasePage{
         super(driver);
     }
 
+    @Step("Open home page")
     public HomePage open() {
         logger.info("Home page is opened");
         logger.debug("Home page is opened fsfasd fsdfsdfasdfas sdfafasfsdf sdfasfasdf asdafsdfafa fafasdf ");
@@ -25,7 +27,7 @@ public class HomePage extends BasePage{
         wait.until(ExpectedConditions.invisibilityOf(spinner));
         return this;
     }
-
+    @Step("Select language {lang}")
     public HomePage selectLanguage(String lang) {
         logger.info("Language is checked to " + lang);
         WebElement uaLang = driver.findElement(By.xpath("(//a[@hreflang='" + lang + "'])[1]"));
@@ -33,7 +35,7 @@ public class HomePage extends BasePage{
         uaLang.click();
         return this;
     }
-
+    @Step("Open page About")
     public HomePage openAbout() {
         System.out.println("Click About btn");
         WebElement aboutBtn = driver.findElement(By.xpath("//a[(contains(@href, 'about_itea')) and @class='parent']"));
@@ -42,6 +44,7 @@ public class HomePage extends BasePage{
         return this;
     }
 
+    @Step("OPen vacancies")
     public HomePage openVacancies() {
         WebElement vacancies = driver.findElement(By.xpath("//li[@id='menu-item-15362']/a"));
         wait.until(ExpectedConditions.elementToBeClickable(vacancies));

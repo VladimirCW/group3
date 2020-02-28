@@ -1,5 +1,6 @@
 package test.java.tests;
 
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,6 +18,8 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+
+@Epic("Cart")
 public class ForPO extends BaseTest {
     HomePage homePage;
     VacancyPage vacancyPage;
@@ -28,6 +31,14 @@ public class ForPO extends BaseTest {
         vacancyPage = new VacancyPage(driver);
     }
 
+    @Link("https://google.com")
+    @TmsLink("B-1")
+    @Issues({
+            @Issue("AAA-1"),
+            @Issue("AAA-134")
+    })
+    @Story("Add to cart")
+    @Feature("Add t-short")
     @Test
     public void anyTest() {
         homePage.open()
@@ -42,9 +53,9 @@ public class ForPO extends BaseTest {
         String actualMsg = vacancyPage.getPhoneErrorMsg();
         String expectedMsg = "Поле не має бути пустим";
         assertEquals(actualMsg, expectedMsg);
-        assertTrue(false);
     }
-
+    @Story("Add to cart")
+    @Feature("Delete t-short")
     @Test()
     public void newAnyTest() {
         homePage.open()
@@ -58,7 +69,6 @@ public class ForPO extends BaseTest {
                 .submit();
         String actualMsg = vacancyPage.getPhoneErrorMsg();
         String expectedMsg = "Поле не має бути пустим";
-        ///assertTrue(false);
         assertEquals(actualMsg, expectedMsg);
     }
 
